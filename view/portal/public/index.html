@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="{$keyword|default=''}" />
+    <meta name="description" content="{$description|default=''}" />
+    <title>易点咨询 - {block name="title"}{$title|default=''}{/block}</title>
+    {include file="public/meta" /}
+    {block name="css"}{/block}
+</head>
+<body>
+{include file="public/header" /}
+
+{block name="main"}{/block}
+
+{include file="public/footer" /}
+{include file="public/script" /}
+{block name="script"}{/block}
+</body>
+</html>

@@ -7,5 +7,5 @@ use app\common\controller\PortalController;
 
 class Service extends PortalController
 {
-    //
+    protected string $title = '服务';
 }

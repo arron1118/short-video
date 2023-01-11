@@ -5,11 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="__STATIC__/plugs/bootstrap-5.2.3/css/bootstrap.min.css">
-    <script src="__STATIC__/plugs/bootstrap-5.2.3/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="__STATIC__/portal/css/index.css">
-
+    <meta name="keywords" content="{$keyword|default=''}" />
+    <meta name="description" content="{$description|default=''}" />
+    <title>易点咨询 - {$title}</title>
+    {include file="public/meta" /}
 </head>
 <body>
 <div class="banner"
@@ -402,40 +401,7 @@
     </div>
 </div>
 
-
-<div class="foot">
-    <nav class="navbar-expand-sm bg-dark navbar-dark py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-4">
-                    <div class="f-title mb-4">网站导航</div>
-                    <ul class="sp-ul">
-                        <li>网站首页</li>
-                        <li>短视频代运营</li>
-                        <li>拍摄剪辑</li>
-                        <li>知识技巧</li>
-                        <li>短视频推广</li>
-                        <li>广告投放</li>
-                        <li>成功案例</li>
-                        <li>联系我们</li>
-                    </ul>
-                </div>
-                <div class="col-4">
-                    <div class="f-title mb-4">联系我们</div>
-                    <ul>
-                        <li>全国统一服务热线： 400-111-1111</li>
-                        <li> 邮箱：384138166@qq..com</li>
-                        <li> 地址：深圳市宝安区民生一路18号</li>
-                    </ul>
-                </div>
-                <div class="col-4">
-                    <img src="__STATIC__/portal/imgs/code4.png" alt="Logo" class="img-fluid me-4 mb-4">
-                    <img src="__STATIC__/portal/imgs/code1.png" alt="Logo" class="img-fluid mb-4">
-                </div>
-            </div>
-        </div>
-    </nav>
-</div>
+{include file="public/footer" /}
+{include file="public/script" /}
 </body>
-
 </html>

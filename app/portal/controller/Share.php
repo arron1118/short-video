@@ -7,5 +7,5 @@ use app\common\controller\PortalController;
 
 class Share extends PortalController
 {
-    //
+    protected string $title = '分享';
 }

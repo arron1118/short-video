@@ -7,5 +7,5 @@ use app\common\controller\PortalController;
 
 class About extends PortalController
 {
-    //
+    protected string $title = '我们';
 }

@@ -19,16 +19,49 @@ class PortalController extends BaseController
     protected string $module = '';
 
     /**
+     * 控制器
+     * @var string
+     */
+    protected string $controller = '';
+
+    /**
+     * 视图实例
      * @var null
      */
     protected $view = null;
+
+    /**
+     * 标题
+     * @var string
+     */
+    protected string $title = '易点咨询';
+
+    /**
+     * 描述
+     * @var string
+     */
+    protected string $description = '易点咨询';
+
+    /**
+     * 关键词
+     * @var string
+     */
+    protected string $keyword = '易点咨询';
 
     public function initialize(): void
     {
         parent::initialize();
 
         $this->module = $this->app->http->getName();
+        $this->controller = strtolower($this->request->controller());
         $this->view = $this->app->view;
+
+        $this->view->assign([
+            'controller' => $this->controller,
+            'title' => $this->title,
+            'description' => $this->description,
+            'keyword' => $this->keyword,
+        ]);
     }
 
     /**
