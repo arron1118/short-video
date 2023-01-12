@@ -1,21 +1,21 @@
-define(["jquery", "easy-admin", "treetable", "iconPickerFa", "autocomplete"], function ($, ea) {
+define(["jquery", "easy-admin", "treetable"], function ($, ea) {
 
-    let table = layui.table,
-        treetable = layui.treetable,
-        iconPickerFa = layui.iconPickerFa,
-        autocomplete = layui.autocomplete;
+    let treetable = layui.treetable,
+        table = layui.table;
 
     let init = {
         table_elem: '#currentTable',
         table_render_id: 'currentTableRenderId',
-        index_url: 'system.menu/index',
-        add_url: 'system.menu/add',
-        delete_url: 'system.menu/delete',
-        edit_url: 'system.menu/edit',
-        modify_url: 'system.menu/modify',
+        index_url: 'cases.cate/index',
+        add_url: 'cases.cate/add',
+        edit_url: 'cases.cate/edit',
+        delete_url: 'cases.cate/delete',
+        export_url: 'cases.cate/export',
+        modify_url: 'cases.cate/modify',
     };
 
     let Controller = {
+
         index: function () {
 
             let renderTable = function () {
@@ -23,7 +23,6 @@ define(["jquery", "easy-admin", "treetable", "iconPickerFa", "autocomplete"], fu
                 treetable.render({
                     treeColIndex: 1,
                     treeSpid: 0,
-                    homdPid: 99999999,
                     treeIdName: 'id',
                     treePidName: 'pid',
                     url: ea.url(init.index_url),
@@ -36,25 +35,8 @@ define(["jquery", "easy-admin", "treetable", "iconPickerFa", "autocomplete"], fu
                     // @todo 不直接使用ea.table.render(); 进行表格初始化, 需要使用 ea.table.formatCols(); 方法格式化`cols`列数据
                     cols: ea.table.formatCols([[
                         {type: 'checkbox'},
-                        {field: 'title', width: 250, title: '菜单名称', align: 'left'},
-                        {field: 'icon', width: 80, title: '图标', templet: ea.table.icon},
-                        {field: 'href', minWidth: 120, title: '菜单链接'},
-                        {
-                            field: 'is_home',
-                            width: 80,
-                            title: '类型',
-                            templet: function (d) {
-                                if (d.pid === 99999999) {
-                                    return '<span class="layui-badge layui-bg-blue">首页</span>';
-                                }
-                                if (d.pid === 0) {
-                                    return '<span class="layui-badge layui-bg-gray">模块</span>';
-                                } else {
-                                    return '<span class="layui-badge-rim">菜单</span>';
-                                }
-                            }
-                        },
-                        {field: 'status', title: '状态', width: 85, templet: ea.table.switch},
+                        {field: 'title', title: '分类名称', align: 'left'},
+                        {field: 'status', title: '状态', width: 85, selectList: ["禁用","启用"], templet: ea.table.switch},
                         {field: 'sort', width: 80, title: '排序', edit: 'text'},
                         {
                             width: 200,
@@ -67,14 +49,12 @@ define(["jquery", "easy-admin", "treetable", "iconPickerFa", "autocomplete"], fu
                                     method: 'open',
                                     auth: 'add',
                                     class: 'layui-btn layui-btn-xs layui-btn-normal',
-                                    extend: 'data-full="true"',
                                 }, {
                                     text: '编辑',
                                     url: init.edit_url,
                                     method: 'open',
                                     auth: 'edit',
                                     class: 'layui-btn layui-btn-xs layui-btn-success',
-                                    extend: 'data-full="true"',
                                 }],
                                 'delete'
                             ]
@@ -129,26 +109,6 @@ define(["jquery", "easy-admin", "treetable", "iconPickerFa", "autocomplete"], fu
             ea.listen();
         },
         add: function () {
-            iconPickerFa.render({
-                elem: '#icon',
-                url: PATH_CONFIG.iconLess,
-                limit: 12,
-                click: function (data) {
-                    $('#icon').val('fa ' + data.icon);
-                },
-                success: function (d) {
-                    console.log(d);
-                }
-            });
-            autocomplete.render({
-                elem: $('#href')[0],
-                url: ea.url('system.menu/getMenuTips'),
-                template_val: '{{d.node}}',
-                template_txt: '{{d.node}} <span class=\'layui-badge layui-bg-gray\'>{{d.title}}</span>',
-                onselect: function (resp) {
-                }
-            });
-
             ea.listen(function (data) {
                 return data;
             }, function (res) {
@@ -160,26 +120,6 @@ define(["jquery", "easy-admin", "treetable", "iconPickerFa", "autocomplete"], fu
             });
         },
         edit: function () {
-            iconPickerFa.render({
-                elem: '#icon',
-                url: PATH_CONFIG.iconLess,
-                limit: 12,
-                click: function (data) {
-                    $('#icon').val('fa ' + data.icon);
-                },
-                success: function (d) {
-                    console.log(d);
-                }
-            });
-            autocomplete.render({
-                elem: $('#href')[0],
-                url: ea.url('system.menu/getMenuTips'),
-                template_val: '{{d.node}}',
-                template_txt: '{{d.node}} <span class=\'layui-badge layui-bg-gray\'>{{d.title}}</span>',
-                onselect: function (resp) {
-                }
-            });
-
             ea.listen(function (data) {
                 return data;
             }, function (res) {
@@ -189,7 +129,7 @@ define(["jquery", "easy-admin", "treetable", "iconPickerFa", "autocomplete"], fu
                     parent.$('[data-treetable-refresh]').trigger("click");
                 });
             });
-        }
+        },
     };
     return Controller;
 });

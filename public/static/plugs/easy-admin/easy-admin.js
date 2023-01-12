@@ -279,7 +279,7 @@ define(["jquery", "tableSelect", "ckeditor"], function () {
                     } else {
                         switch (v) {
                             case 'refresh':
-                                toolbarHtml += '<button class="layui-btn layui-btn-sm layuimini-btn-primary" data-table-fresh="' + tableId + '"><i class="fa fa-refresh"></i> 刷新</button>';
+                                toolbarHtml += '<button class="layui-btn layui-btn-sm layuimini-btn-primary" data-table-refresh="' + tableId + '"><i class="fa fa-refresh"></i> 刷新</button>';
                                 break;
 
                             case 'add':
