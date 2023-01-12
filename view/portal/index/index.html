@@ -277,23 +277,19 @@
 <div class="module-4">
     <div class="container">
         <div class="module-title my-5 text-center">运营案例</div>
-        <div class="text-center d-flex flex-wrap justify-content-center dy-case">
-            <img src="__STATIC__/portal/imgs/dy/case1.png" alt="" class="img-fluid">
-            <img src="__STATIC__/portal/imgs/dy/case2.png" alt="" class="img-fluid">
-            <img src="__STATIC__/portal/imgs/dy/case3.png" alt="" class="img-fluid">
-            <img src="__STATIC__/portal/imgs/dy/case4.png" alt="" class="img-fluid">
-            <img src="__STATIC__/portal/imgs/dy/case5.png" alt="" class="img-fluid">
-            <img src="__STATIC__/portal/imgs/dy/case6.png" alt="" class="img-fluid">
-            <img src="__STATIC__/portal/imgs/dy/case1.png" alt="" class="img-fluid">
-            <img src="__STATIC__/portal/imgs/dy/case7.png" alt="" class="img-fluid">
-            <img src="__STATIC__/portal/imgs/dy/case3.png" alt="" class="img-fluid">
+        <div class="row row-cols-3 align-items-center">
+            {foreach ($cases as $key => $val)}
+            <div class="col p-0 m-0">
+                <img src="{$val.cover_img}" alt="{$val.title}" class="img-fluid" />
+            </div>
+            {/foreach}
         </div>
     </div>
 </div>
 <div class="module-5 mb-5">
     <div class="container">
         <div class="module-title my-5 text-center">合作客户</div>
-        <img src="__STATIC__/portal/imgs/dy/customer.png" alt="" class="img-fluid">
+        {include file="public/cooperate_customers" /}
     </div>
 </div>
 <div class="module-6 mb-5">
@@ -325,78 +321,23 @@
     <div class="container">
         <div class="module-title my-5 text-center">拍摄知识</div>
         <div class="row">
+            {foreach ($shotTips as $key => $val)}
             <div class="col-4 mb-4">
-                <a>
-                    <img src="__STATIC__/portal/imgs/zx/card.png" alt="" class="img-fluid">
-                    <div class="card text-center">
-                        <div class="card-title">短视频拍摄运镜技巧你都知道有哪些？</div>
+                <div class="card p-0">
+                    <img src="{$val.cover_img}" alt="{$val.title}" class="card-img-top">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <a class="stretched-link text-reset" href="#" title="{$val.title}">
+                                {$val.title}
+                            </a>
+                        </div>
                         <div class="card-content line3 text-indent2">
-                            虽然只有60个短视频s时间，但在优的短片拍摄中，每每一个镜头都经过精心设计。就像导演想拍一部电影一样虽然只有60个短视频s时间，
-                            但在优的短片拍摄中，每每一个镜头都经过精心设计。就像导演想拍一部电影一样
+                            {$val.description}
                         </div>
                     </div>
-                </a>
+                </div>
             </div>
-            <div class="col-4 mb-4">
-                <a>
-                    <img src="__STATIC__/portal/imgs/zx/card.png" alt="" class="img-fluid">
-                    <div class="card text-center">
-                        <div class="card-title">短视频拍摄运镜技巧你都知道有哪些？</div>
-                        <div class="card-content line3 text-indent2">
-                            虽然只有60个短视频s时间，但在优的短片拍摄中，每每一个镜头都经过精心设计。就像导演想拍一部电影一样虽然只有60个短视频s时间，
-                            但在优的短片拍摄中，每每一个镜头都经过精心设计。就像导演想拍一部电影一样
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-4 mb-4">
-                <a>
-                    <img src="__STATIC__/portal/imgs/zx/card.png" alt="" class="img-fluid">
-                    <div class="card text-center">
-                        <div class="card-title">短视频拍摄运镜技巧你都知道有哪些？</div>
-                        <div class="card-content line3 text-indent2">
-                            虽然只有60个短视频s时间，但在优的短片拍摄中，每每一个镜头都经过精心设计。就像导演想拍一部电影一样虽然只有60个短视频s时间，
-                            但在优的短片拍摄中，每每一个镜头都经过精心设计。就像导演想拍一部电影一样
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-4 mb-4">
-                <a>
-                    <img src="__STATIC__/portal/imgs/zx/card.png" alt="" class="img-fluid">
-                    <div class="card text-center">
-                        <div class="card-title">短视频拍摄运镜技巧你都知道有哪些？</div>
-                        <div class="card-content line3 text-indent2">
-                            虽然只有60个短视频s时间，但在优的短片拍摄中，每每一个镜头都经过精心设计。就像导演想拍一部电影一样虽然只有60个短视频s时间，
-                            但在优的短片拍摄中，每每一个镜头都经过精心设计。就像导演想拍一部电影一样
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-4 mb-4">
-                <a>
-                    <img src="__STATIC__/portal/imgs/zx/card.png" alt="" class="img-fluid">
-                    <div class="card text-center">
-                        <div class="card-title">短视频拍摄运镜技巧你都知道有哪些？</div>
-                        <div class="card-content line3 text-indent2">
-                            虽然只有60个短视频s时间，但在优的短片拍摄中，每每一个镜头都经过精心设计。就像导演想拍一部电影一样虽然只有60个短视频s时间，
-                            但在优的短片拍摄中，每每一个镜头都经过精心设计。就像导演想拍一部电影一样
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-4 mb-4">
-                <a>
-                    <img src="__STATIC__/portal/imgs/zx/card.png" alt="" class="img-fluid">
-                    <div class="card text-center">
-                        <div class="card-title">短视频拍摄运镜技巧你都知道有哪些？</div>
-                        <div class="card-content line3 text-indent2">
-                            虽然只有60个短视频s时间，但在优的短片拍摄中，每每一个镜头都经过精心设计。就像导演想拍一部电影一样虽然只有60个短视频s时间，
-                            但在优的短片拍摄中，每每一个镜头都经过精心设计。就像导演想拍一部电影一样
-                        </div>
-                    </div>
-                </a>
-            </div>
+            {/foreach}
         </div>
     </div>
 </div>
