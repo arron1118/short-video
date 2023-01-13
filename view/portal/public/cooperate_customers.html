@@ -1,7 +1,7 @@
 <div class="row row-cols-6 align-items-center">
     {foreach ($cooperate_customers as $key => $val)}
-    <div class="col mb-2">
-        <img src="{$val.logo}" class="img-fluid" alt="{$val.title}" title="{$val.title}" />
+    <div class="col mb-4 text-center">
+        <img src="{$val.logo|default='static/common/images/nopic.jpg'}" class="img-fluid" alt="{$val.title}" title="{$val.title}" style="max-height: 84px;" />
     </div>
     {/foreach}
 </div>
