@@ -10,6 +10,8 @@ class Cases extends PortalController
 {
     protected string $title = '案例';
 
+    protected $limit = 2;
+
     public function initialize(): void
     {
         parent::initialize();
@@ -17,7 +19,7 @@ class Cases extends PortalController
         $this->model = \app\admin\model\Cases::class;
     }
 
-    public function index()
+    public function getCasesCateList()
     {
         $cates = CasesCate::field('id, title')
             ->where([
@@ -25,28 +27,37 @@ class Cases extends PortalController
             ])->order('id asc, sort desc')
             ->select();
 
-        dump($cates);
-        $this->view->assign([
-            'cates' => $cates,
-        ]);
-        return $this->view->fetch();
+        $this->success(lang('Get successful'), $cates);
     }
 
     public function getCasesList()
     {
         $cate_id = $this->request->param('cate_id/d', 0);
+        $page = $this->request->param('page/d', 1);
+        $limit = $this->request->param('limit/d', $this->limit);
         if (!$cate_id) {
             $this->error(lang('The data does not exist'));
         }
 
-        $cases = $this->model::field('id, title, cover_img')
+        $total = $this->model::where([
+            'cases_cate_id' => $cate_id,
+            'status' => 1
+        ])->count();
+
+        $cases = $this->model::field('id, cases_cate_id, title, cover_img, description')
             ->where([
                 'status' => 1,
                 'cases_cate_id' => $cate_id,
             ])->order('id desc, sort desc')
+            ->limit(($page - 1) * $limit, $limit)
             ->select();
 
-        $this->success(lang('Get successful'), $cases);
+        return json([
+            'msg' => lang('Get successful'),
+            'data' => $cases,
+            'total' => $total,
+            'limit' => $limit,
+        ]);
     }
 
     public function info()
