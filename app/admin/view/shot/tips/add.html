@@ -2,6 +2,14 @@
     <form id="app-form" class="layui-form layuimini-form">
 
         <div class="layui-form-item">
+            <label class="layui-form-label">分类</label>
+            <div class="layui-input-block">
+                <select name="shot_cate_id" lay-verify="required" data-select="{:url('shot.cate/index')}" data-fields="id,title">
+
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
             <label class="layui-form-label">标题</label>
             <div class="layui-input-block">
                 <input type="text" name="title" class="layui-input" lay-verify="required" placeholder="请输入标题" value="">

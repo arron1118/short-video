@@ -1,31 +1,34 @@
 <?php
 
-namespace app\admin\controller;
+namespace app\admin\controller\shot;
 
-use app\admin\model\CasesCate;
 use app\common\controller\AdminController;
 use EasyAdmin\annotation\ControllerAnnotation;
 use EasyAdmin\annotation\NodeAnotation;
 use think\App;
 
 /**
- * @ControllerAnnotation(title="cases")
+ * @ControllerAnnotation(title="shot_cate")
  */
-class Cases extends AdminController
+class Cate extends AdminController
 {
 
     use \app\admin\traits\Curd;
+
+    protected $sort = [
+        'sort' => 'desc',
+        'id' => 'asc'
+    ];
 
     public function __construct(App $app)
     {
         parent::__construct($app);
 
-        $this->model = new \app\admin\model\Cases();
+        $this->model = new \app\admin\model\ShotCate();
 
         $this->assign('getStatusList', $this->model->getStatusList());
 
     }
-
 
     /**
      * @NodeAnotation(title="列表")
@@ -36,22 +39,13 @@ class Cases extends AdminController
             if (input('selectFields')) {
                 return $this->selectList();
             }
-            [$page, $limit, $where] = $this->buildTableParams();
-            $count = $this->model
-                ->withJoin('casesCate', 'LEFT')
-                ->where($where)
-                ->count();
-            $list = $this->model
-                ->withJoin('casesCate', 'LEFT')
-                ->where($where)
-                ->page($page, $limit)
-                ->order($this->sort)
-                ->select();
+            $count = $this->model->count();
+            $list = $this->model->order($this->sort)->select();
             $data = [
-                'code'  => 0,
-                'msg'   => '',
+                'code' => 0,
+                'msg' => '',
                 'count' => $count,
-                'data'  => $list,
+                'data' => $list,
             ];
             return json($data);
         }
@@ -61,22 +55,29 @@ class Cases extends AdminController
     /**
      * @NodeAnotation(title="添加")
      */
-    public function add()
+    public function add($id = null)
     {
         if ($this->request->isPost()) {
             $post = $this->request->post();
-            $rule = [];
+            $rule = [
+                'pid|上级菜单' => 'require',
+                'title|分类名称' => 'require',
+            ];
             $this->validate($post, $rule);
             try {
                 $save = $this->model->save($post);
             } catch (\Exception $e) {
-                $this->error(lang('Save failed') . ':'.$e->getMessage());
+                $this->error(lang('Save failed'));
             }
-            $save ? $this->success(lang('Saved successfully')) : $this->error(lang('Save failed'));
+            if ($save) {
+                $this->success(lang('Saved successfully'));
+            } else {
+                $this->error(lang('Save failed'));
+            }
         }
-        $this->app->view->assign([
-            'pidMenuList' => (new CasesCate())->getPidMenuList(),
-        ]);
+        $pidMenuList = $this->model->getPidMenuList();
+        $this->assign('id', $id);
+        $this->assign('pidMenuList', $pidMenuList);
         return $this->fetch();
     }
 
@@ -86,19 +87,31 @@ class Cases extends AdminController
     public function edit($id)
     {
         $row = $this->model->find($id);
-        empty($row) && $this->error(lang('The data does not exist'));
+        empty($row) && $this->error('数据不存在');
         if ($this->request->isPost()) {
             $post = $this->request->post();
-            $rule = [];
+            $rule = [
+                'pid|上级菜单' => 'require',
+                'title|分类名称' => 'require',
+            ];
             $this->validate($post, $rule);
             try {
                 $save = $row->save($post);
             } catch (\Exception $e) {
                 $this->error(lang('Save failed'));
             }
-            $save ? $this->success(lang('Saved successfully')) : $this->error(lang('Save failed'));
+            if ($save) {
+                $this->success(lang('Saved successfully'));
+            } else {
+                $this->error(lang('Save failed'));
+            }
         }
-        $this->assign('row', $row);
+        $pidMenuList = $this->model->getPidMenuList();
+        $this->assign([
+            'id' => $id,
+            'pidMenuList' => $pidMenuList,
+            'row' => $row,
+        ]);
         return $this->fetch();
     }
 }
