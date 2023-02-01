@@ -26,15 +26,15 @@
                             navigator.userAgent
                         )
                     ) {
-                        console.log('web')
-                        $('.banner').removeClass('bannerHeight-mobil').addClass('bannerHeight-web')
+                        console.log('手机')
+                        $('.banner').addClass('bannerHeight-mobil').removeClass('bannerHeight-web')
                     }
                 } catch (e) {
                     console.log('这是')
                 }
             }
         }else{
-            console.log('手机')
+            console.log('web')
             $('.banner').removeClass('bannerHeight-mobil').addClass('bannerHeight-web')
         }
     })

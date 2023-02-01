@@ -179,10 +179,10 @@ video {
     line-height: 28px;
 }
 .bannerHeight-mobil{
-    min-height: 1095px;
+    min-height: 450px;
 }
 .bannerHeight-web{
-    min-height: 450px;
+    min-height: 1095px;
 }
 .about-banner-img {
     width: 385px;
