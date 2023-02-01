@@ -92,7 +92,7 @@ define(["jquery", "tableSelect", "ckeditor"], function () {
                     timeout: 60000,
                     success: function (res) {
                         admin.msg.close(index);
-                        return eval('res.' + option.statusName) === option.statusCode ? ok(res) : no(res)
+                        return eval('res.' + option.statusName) === option.statusCode ? ok(res) : (typeof no === 'function' ? no(res) : option.no(res))
                     },
                     error: function (xhr, textstatus, thrown) {
                         admin.msg.error('Status:' + xhr.status + '，' + xhr.statusText + '，请稍后再试！', function () {

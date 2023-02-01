@@ -65,8 +65,12 @@ class Cases extends AdminController
     {
         if ($this->request->isPost()) {
             $post = $this->request->post();
-            $rule = [];
-            $this->validate($post, $rule);
+            $rule = [
+                'cases_cate_id' => 'require'
+            ];
+            $this->validate($post, $rule, [
+                'cases_cate_id' => '请选择分类',
+            ]);
             try {
                 $save = $this->model->save($post);
             } catch (\Exception $e) {
@@ -74,8 +78,10 @@ class Cases extends AdminController
             }
             $save ? $this->success(lang('Saved successfully')) : $this->error(lang('Save failed'));
         }
+        $pidMenuList = (new CasesCate())->getPidMenuList();
+        array_shift($pidMenuList);
         $this->app->view->assign([
-            'pidMenuList' => (new CasesCate())->getPidMenuList(),
+            'pidMenuList' => $pidMenuList,
         ]);
         return $this->fetch();
     }
@@ -89,8 +95,12 @@ class Cases extends AdminController
         empty($row) && $this->error(lang('The data does not exist'));
         if ($this->request->isPost()) {
             $post = $this->request->post();
-            $rule = [];
-            $this->validate($post, $rule);
+            $rule = [
+                'cases_cate_id' => 'require'
+            ];
+            $this->validate($post, $rule, [
+                'cases_cate_id' => '请选择分类',
+            ]);
             try {
                 $save = $row->save($post);
             } catch (\Exception $e) {
@@ -98,7 +108,12 @@ class Cases extends AdminController
             }
             $save ? $this->success(lang('Saved successfully')) : $this->error(lang('Save failed'));
         }
-        $this->assign('row', $row);
+        $pidMenuList = (new CasesCate())->getPidMenuList();
+        array_shift($pidMenuList);
+        $this->app->view->assign([
+            'pidMenuList' => $pidMenuList,
+            'row' => $row,
+        ]);
         return $this->fetch();
     }
 }
