@@ -20,7 +20,7 @@
 
                 $.each(cates, function (index, item) {
                     nav.append($('<li />', {
-                        class: 'nav-item',
+                        class: 'nav-item mb-5',
                         role: 'presentation',
                         'data-id': item.id,
                     }).append($('<button />', {
@@ -80,12 +80,12 @@
                         href: '#',
                         title: item.title,
                     }).text(item.title))).append($('<div />', {
-                        class: 'card-content line3 text-indent2',
+                        class: 'card-content line3',
                     }).text(item.description)))))
                 })
 
                 // pages
-                let p = Math.round(cases.total / cases.limit)
+                let p = Math.ceil(cases.total / cases.limit)
                 if (p > 1) {
                     $('#pills-' + cate_id + ' .list-page').remove()
                     let ul = $('<ul />', {

@@ -8,7 +8,7 @@
 <script type="text/javascript">
     $(function(){
         // company-list
-        $('.company-list:odd').attr("data-am-scrollspy","{animation: 'slide-top', delay: 100}")
-        $('.company-list:even').attr("data-am-scrollspy","{animation: 'slide-bottom', delay: 100}")
+        $('.company-list:odd').addClass("wow slideInLeft").attr("data-wow-delay","0.1s")
+        $('.company-list:even').addClass("wow slideInDown").attr("data-wow-delay","0.3s")
     })
 </script>
