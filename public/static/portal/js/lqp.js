@@ -20,7 +20,7 @@
                        )
                    ) {
                        console.log('手机')
-                       $('.banner').addClass('bannerHeight-mobil').removeClass('bannerHeight-web')
+                       $('.home-banner').addClass('bannerHeight-mobil').removeClass('bannerHeight-web')
                        $('.contact-me').removeClass('position-absolute end-0 content-card')
                    }
                } catch (e) {
@@ -29,7 +29,7 @@
            }
        }else{
            console.log('web')
-           $('.banner').removeClass('bannerHeight-mobil').addClass('bannerHeight-web')
+           $('.home-banner').removeClass('bannerHeight-mobil').addClass('bannerHeight-web')
            $('.contact-me').addClass('position-absolute end-0 content-card')
        }
    }
