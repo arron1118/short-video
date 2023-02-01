@@ -31,32 +31,8 @@
         </div>
     </div>
 </div>
-  <script>
-     $(function (){
-         if (
-             /AppleWebKit.*Mobile/i.test(navigator.userAgent) ||
-             /MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(
-                 navigator.userAgent
-             )
-         ) {
-             if (window.location.href.indexOf("?mobile") < 0) {
-                 try {
-                     if (
-                         /Android|Windows Phone|webOS|iPhone|iPod|BlackBerry|iPad/i.test(
-                             navigator.userAgent
-                         )
-                     ) {
-                         console.log('手机')
-                         $('.contact-me').removeClass('position-absolute end-0 content-card')
-                     }
-                 } catch (e) {
-                     console.log('这是')
-                 }
-             }
-         }else{
-             console.log('web')
-             $('.contact-me').addClass('position-absolute end-0 content-card')
-         }
-     })
-</script>
+{/block}
+
+{block name="script"}
+<script src="__STATIC__/portal/js/lqp.js"></script>
 {/block}
