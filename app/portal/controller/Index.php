@@ -30,7 +30,7 @@ class Index extends PortalController
             ->limit(9)
             ->select();
 
-        // 案例
+        // 拍摄知识
         $shotTips = ShotTips::field('id, title, cover_img, description')
             ->where([
                 'status' => 1,

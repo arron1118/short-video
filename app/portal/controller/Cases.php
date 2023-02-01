@@ -60,8 +60,14 @@ class Cases extends PortalController
         ]);
     }
 
-    public function info()
+    public function info($id)
     {
+        $info = $this->model::find($id);
+        $this->view->assign([
+            'info' => $info,
+            'title' => $info['title'],
+        ]);
+
         return $this->view->fetch();
     }
 }

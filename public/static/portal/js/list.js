@@ -75,10 +75,11 @@
                         class: 'card-body'
                     }).append($('<div />', {
                         class: 'card-title',
-                    }).append($('<div />', {
+                    }).append($('<a />', {
                         class: 'stretched-link text-reset',
-                        href: '#',
+                        href: '/cases/info.html?id=' + item.id,
                         title: item.title,
+                        target: '_blank',
                     }).text(item.title))).append($('<div />', {
                         class: 'card-content line3',
                     }).text(item.description)))))
