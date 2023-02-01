@@ -164,7 +164,7 @@ video {
 
 .about-banner {
     background-color: #000000;
-    padding: 50px;
+    padding: 50px 0;
 }
 
 .about-title {
@@ -178,7 +178,12 @@ video {
     font-size: 18px;
     line-height: 28px;
 }
-
+.bannerHeight-mobil{
+    min-height: 1095px;
+}
+.bannerHeight-web{
+    min-height: 450px;
+}
 .about-banner-img {
     width: 385px;
     height: 355px;
@@ -259,6 +264,7 @@ video {
     flex-direction: column;
     justify-content: center;
     padding: 0 120px 0 100px;
+    bottom: 60px;
 }
 
 .mapbox {

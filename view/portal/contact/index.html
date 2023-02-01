@@ -10,9 +10,9 @@
     </div>
     <div class="mb-5 position-relative mapbox">
         <img src="__STATIC__/portal/imgs/lx/map.png" alt="" class="img-fluid wow slideInLeft" data-wow-delay="0">
-        <div class="content-card position-absolute end-0 shadow wow slideInRight" style="bottom: 60px;" data-wow-delay="0.6s">
-            <div class="row">
-                <div class="col-5">
+        <div class="contact-me shadow wow fadeIn">
+            <div class="row ps-0">
+                <div class="col-lg-5 col-md-12 col-sm-12">
                     <div class="mb-5">
                         <div style="font-size: 18px; color: #030303;">CONTACT</div>
                         <div style="font-size: 24px; color: #030303;">联系我们</div>
@@ -22,7 +22,7 @@
                         售后服务: 010-68703766
                     </div>
                 </div>
-                <div class="col-7">
+                <div class="col-lg-7 col-md-12 col-sm-12">
                     <div class="mb-4" style="font-size: 24px; color: #575757;">深圳市易点市场研究咨询有限公司</div>
                     <div class="mb-4" style="font-size: 18px; color: #575757;">地址：深圳市宝安区民生一路18号5栋二层</div>
                     <div class="mb-4" style="height: 2px;background-color: #ccc; width: 85%;"></div>
@@ -31,4 +31,32 @@
         </div>
     </div>
 </div>
+  <script>
+     $(function (){
+         if (
+             /AppleWebKit.*Mobile/i.test(navigator.userAgent) ||
+             /MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(
+                 navigator.userAgent
+             )
+         ) {
+             if (window.location.href.indexOf("?mobile") < 0) {
+                 try {
+                     if (
+                         /Android|Windows Phone|webOS|iPhone|iPod|BlackBerry|iPad/i.test(
+                             navigator.userAgent
+                         )
+                     ) {
+                         console.log('web')
+                         $('.contact-me').removeClass('position-absolute end-0 content-card')
+                     }
+                 } catch (e) {
+                     console.log('这是')
+                 }
+             }
+         }else{
+             console.log('手机')
+             $('.contact-me').addClass('position-absolute end-0 content-card')
+         }
+     })
+</script>
 {/block}

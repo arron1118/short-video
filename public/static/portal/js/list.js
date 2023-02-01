@@ -63,7 +63,7 @@
                 $.each(cases.data, function (index, item) {
                     let listContent = $('#pills-' + cate_id + ' .list-content')
                     listContent.append($('<div />', {
-                        class: 'col-4 mb-4',
+                        class: 'col-lg-4 col-md-6 col-sm-6 mb-4',
                     }).append($('<div />', {
                         class: 'card p-0 border-0',
                     }).append($('<img />', {
