@@ -1,7 +1,14 @@
 <div class="row row-cols-6 align-items-center">
     {foreach ($cooperate_customers as $key => $val)}
-    <div class="col mb-4 text-center">
+    <div class="col mb-4 text-center company-list">
         <img src="{$val.logo|default='static/common/images/nopic.jpg'}" class="img-fluid" alt="{$val.title}" title="{$val.title}" style="max-height: 84px;" />
     </div>
     {/foreach}
 </div>
+<script type="text/javascript">
+    $(function(){
+        // company-list
+        $('.company-list:odd').addClass("wow slideInLeft").attr("data-wow-delay","0.1s")
+        $('.company-list:even').addClass("wow slideInDown").attr("data-wow-delay","0.3s")
+    })
+</script>
