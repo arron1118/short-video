@@ -2,10 +2,22 @@
 
     let listContainer = $('.list-container')
 
-    let init = function () {
-        $.get("/Cases/getCasesCateList", {}, function (cates) {
+    this.List = function (options) {
+        this.CONFIG = {
+            CATE_URL: '/Cases/getCasesCateList',
+            LIST_URL: '/Cases/getCasesList',
+            INFO_URL: '/cases/info.html',
+        }
+
+        if (options) {
+            this.CONFIG = $.extend(this.CONFIG, options)
+        }
+    }
+
+    List.prototype.init = function () {
+        let _self = this
+        $.get(_self.CONFIG.CATE_URL, {}, function (cates) {
             cates = cates.data
-            console.log(cates)
             if (cates.length > 0) {
                 // tablist
                 let nav = $('<ul />', {
@@ -31,7 +43,7 @@
                         type: 'button',
                         role: 'tab',
                     }).text(item.title).on('click', function () {
-                        getCasesList(item.id)
+                        _self.getCasesList(item.id)
                     })))
 
                     content.append($('<div />', {
@@ -50,13 +62,14 @@
                 $(listContainer).append(nav).append(content)
 
                 // tabContent
-                getCasesList(cates[0].id)
+                _self.getCasesList(cates[0].id)
             }
         })
     }
 
-    let getCasesList = function (cate_id, page = 1, limit = 6) {
-        $.get('/Cases/getCasesList', {cate_id: cate_id, page: page, limit: limit}, function (cases) {
+    List.prototype.getCasesList = function (cate_id, page = 1, limit = 6) {
+        let _self = this
+        $.get(_self.CONFIG.LIST_URL, {cate_id: cate_id, page: page, limit: limit}, function (cases) {
             if (cases.data.length > 0) {
                 $('#pills-' + cate_id + ' .list-content').children().remove()
                 // content
@@ -77,7 +90,7 @@
                         class: 'card-title',
                     }).append($('<a />', {
                         class: 'stretched-link text-reset',
-                        href: '/cases/info.html?id=' + item.id,
+                        href: _self.CONFIG.INFO_URL + '?id=' + item.id,
                         title: item.title,
                         target: '_blank',
                     }).text(item.title))).append($('<div />', {
@@ -105,7 +118,7 @@
                             class: 'page-link',
                             href: 'javascript:()',
                         }).text('上一页').on('click', function () {
-                            getCasesList(cate_id, page - 1)
+                            _self.getCasesList(cate_id, page - 1)
                         }))
                     }
                     ul.append(prevPage)
@@ -117,7 +130,7 @@
                             class: 'page-link',
                             href: 'javascript:()',
                         }).text(i).on('click', function () {
-                            getCasesList(cate_id, i)
+                            _self.getCasesList(cate_id, i)
                         })))
                     }
 
@@ -133,7 +146,7 @@
                             class: 'page-link',
                             href: 'javascript:()',
                         }).text('下一页').on('click', function () {
-                            getCasesList(cate_id, page + 1)
+                            _self.getCasesList(cate_id, page + 1)
                         }))
                     }
                     ul.append(nextPage)
@@ -148,5 +161,4 @@
         })
     }
 
-    init();
 })(jQuery, window)
