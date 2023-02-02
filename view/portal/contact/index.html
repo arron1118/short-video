@@ -6,10 +6,10 @@
 </div>
 <div class="container">
     <div class="content-tips my-5" data-wow-delay="0.1s">
-        素未谋面，却能心照不宣
+        {:sysconfig('site', 'contact_title')}
     </div>
     <div class="mb-5 position-relative mapbox">
-        <img src="__STATIC__/portal/imgs/lx/map.png" alt="" class="img-fluid wow slideInLeft" data-wow-delay="0">
+        <img src="{:sysconfig('site', 'contact_img')}" alt="" class="img-fluid wow slideInLeft" data-wow-delay="0">
         <div class="contact-me shadow wow fadeIn">
             <div class="row px-2">
                 <div class="col-lg-5 col-md-12 col-sm-12">
@@ -18,13 +18,13 @@
                         <div style="font-size: 24px; color: #030303;">联系我们</div>
                     </div>
                     <div class="pt-4" style="color: #575757;font-size: 18px;">
-                        售前咨询: 010-68703788<br/>
-                        售后服务: 010-68703766
+                        <p>售前咨询: {:sysconfig('site', 'contact_service_tel1')}</p>
+                        <p>售后服务: {:sysconfig('site', 'contact_service_tel2')}</p>
                     </div>
                 </div>
                 <div class="col-lg-7 col-md-12 col-sm-12">
-                    <div class="mb-4" style="font-size: 24px; color: #575757;">深圳市易点市场研究咨询有限公司</div>
-                    <div class="mb-4" style="font-size: 18px; color: #575757;">地址：深圳市宝安区民生一路18号5栋二层</div>
+                    <div class="mb-4" style="font-size: 24px; color: #575757;">{:sysconfig('site', 'contact_company')}</div>
+                    <div class="mb-4" style="font-size: 18px; color: #575757;">地址：{:sysconfig('site', 'contact_address')}</div>
                     <div class="mb-4" style="height: 2px;background-color: #ccc; width: 85%;"></div>
                 </div>
             </div>
