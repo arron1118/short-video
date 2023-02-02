@@ -1,17 +1,17 @@
 <?php
 
-namespace app\admin\controller\shot;
+namespace app\admin\controller;
 
-use app\admin\model\ShotCate;
+use app\admin\model\ShareCate;
 use app\common\controller\AdminController;
 use EasyAdmin\annotation\ControllerAnnotation;
 use EasyAdmin\annotation\NodeAnotation;
 use think\App;
 
 /**
- * @ControllerAnnotation(title="shot_tips")
+ * @ControllerAnnotation(title="Share")
  */
-class Tips extends AdminController
+class Share extends AdminController
 {
 
     use \app\admin\traits\Curd;
@@ -20,11 +20,12 @@ class Tips extends AdminController
     {
         parent::__construct($app);
 
-        $this->model = new \app\admin\model\ShotTips();
+        $this->model = new \app\admin\model\Share();
 
         $this->assign('getStatusList', $this->model->getStatusList());
 
     }
+
 
     /**
      * @NodeAnotation(title="列表")
@@ -37,11 +38,11 @@ class Tips extends AdminController
             }
             [$page, $limit, $where] = $this->buildTableParams();
             $count = $this->model
-                ->withJoin('ShotCate', 'LEFT')
+                ->withJoin('ShareCate', 'LEFT')
                 ->where($where)
                 ->count();
             $list = $this->model
-                ->withJoin('ShotCate', 'LEFT')
+                ->withJoin('ShareCate', 'LEFT')
                 ->where($where)
                 ->page($page, $limit)
                 ->order($this->sort)
@@ -65,10 +66,10 @@ class Tips extends AdminController
         if ($this->request->isPost()) {
             $post = $this->request->post();
             $rule = [
-                'shot_cate_id' => 'require'
+                'share_cate_id' => 'require'
             ];
             $this->validate($post, $rule, [
-                'shot_cate_id' => '请选择分类',
+                'share_cate_id' => '请选择分类',
             ]);
             try {
                 $save = $this->model->save($post);
@@ -77,7 +78,7 @@ class Tips extends AdminController
             }
             $save ? $this->success(lang('Saved successfully')) : $this->error(lang('Save failed'));
         }
-        $pidMenuList = (new ShotCate())->getPidMenuList();
+        $pidMenuList = (new ShareCate())->getPidMenuList();
         array_shift($pidMenuList);
         $this->app->view->assign([
             'pidMenuList' => $pidMenuList,
@@ -95,10 +96,10 @@ class Tips extends AdminController
         if ($this->request->isPost()) {
             $post = $this->request->post();
             $rule = [
-                'shot_cate_id' => 'require'
+                'share_cate_id' => 'require'
             ];
             $this->validate($post, $rule, [
-                'shot_cate_id' => '请选择分类',
+                'share_cate_id' => '请选择分类',
             ]);
             try {
                 $save = $row->save($post);
@@ -107,7 +108,7 @@ class Tips extends AdminController
             }
             $save ? $this->success(lang('Saved successfully')) : $this->error(lang('Save failed'));
         }
-        $pidMenuList = (new ShotCate())->getPidMenuList();
+        $pidMenuList = (new ShareCate())->getPidMenuList();
         array_shift($pidMenuList);
         $this->app->view->assign([
             'pidMenuList' => $pidMenuList,
@@ -115,5 +116,4 @@ class Tips extends AdminController
         ]);
         return $this->fetch();
     }
-
 }

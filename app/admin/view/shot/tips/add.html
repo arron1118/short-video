@@ -4,8 +4,11 @@
         <div class="layui-form-item">
             <label class="layui-form-label">分类</label>
             <div class="layui-input-block">
-                <select name="shot_cate_id" lay-verify="required" data-select="{:url('shot.cate/index')}" data-fields="id,title">
-
+                <select name="shot_cate_id">
+                    <option value="">请选择</option>
+                    {foreach $pidMenuList as $vo}
+                        <option value="{$vo.id}">{$vo.title|raw}</option>
+                    {/foreach}
                 </select>
             </div>
         </div>

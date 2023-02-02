@@ -3,8 +3,8 @@ declare (strict_types = 1);
 
 namespace app\portal\controller;
 
-use app\admin\model\ShotCate;
-use app\admin\model\ShotTips;
+use app\admin\model\ShareCate;
+use app\admin\model\Share as ShareModel;
 use app\common\controller\PortalController;
 
 class Share extends PortalController
@@ -17,12 +17,12 @@ class Share extends PortalController
     {
         parent::initialize();
 
-        $this->model = \app\admin\model\ShotTips::class;
+        $this->model = \app\admin\model\ShareModel::class;
     }
 
-    public function getShotCateList()
+    public function getShareCateList()
     {
-        $cates = ShotCate::field('id, title')
+        $cates = ShareCate::field('id, title')
             ->where([
                 'status' => 1,
             ])->order('id asc, sort desc')
@@ -31,7 +31,7 @@ class Share extends PortalController
         $this->success(lang('Get successful'), $cates);
     }
 
-    public function getShotTipsList()
+    public function getShareList()
     {
         $cate_id = $this->request->param('cate_id/d', 0);
         $page = $this->request->param('page/d', 1);
@@ -41,14 +41,14 @@ class Share extends PortalController
         }
 
         $total = $this->model::where([
-            'shot_cate_id' => $cate_id,
+            'share_cate_id' => $cate_id,
             'status' => 1
         ])->count();
 
-        $cases = $this->model::field('id, shot_cate_id, title, cover_img, description')
+        $cases = $this->model::field('id, share_cate_id, title, cover_img, description')
             ->where([
                 'status' => 1,
-                'shot_cate_id' => $cate_id,
+                'share_cate_id' => $cate_id,
             ])->order('id desc, sort desc')
             ->limit(($page - 1) * $limit, $limit)
             ->select();

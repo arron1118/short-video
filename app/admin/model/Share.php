@@ -4,18 +4,19 @@ namespace app\admin\model;
 
 use app\common\model\TimeModel;
 
-class ShotTips extends TimeModel
+class Share extends TimeModel
 {
 
-    protected $name = "shot_tips";
+    protected $name = "Share";
 
     protected $deleteTime = "delete_time";
 
 
-    public function ShotCate()
+    public function ShareCate()
     {
-        return $this->belongsTo('\app\admin\model\ShotCate', 'shot_cate_id', 'id')->bind(['cate_title' => 'title']);
+        return $this->belongsTo('\app\admin\model\ShareCate', 'share_cate_id', 'id')->bind(['cate_title' => 'title']);
     }
+
 
     public function getStatusList()
     {
