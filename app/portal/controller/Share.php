@@ -69,6 +69,6 @@ class Share extends PortalController
             'title' => $info['title'],
         ]);
 
-        return $this->view->fetch();
+        return $this->view->fetch('public/info');
     }
 }

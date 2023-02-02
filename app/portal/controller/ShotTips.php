@@ -3,12 +3,13 @@ declare (strict_types = 1);
 
 namespace app\portal\controller;
 
-use app\admin\model\CasesCate;
+use app\admin\model\ShotCate;
+use app\admin\model\ShotTips as ShotTipsModel;
 use app\common\controller\PortalController;
 
-class Cases extends PortalController
+class ShotTips extends PortalController
 {
-    protected string $title = '案例';
+    protected string $title = '分享';
 
     protected $limit = 2;
 
@@ -16,12 +17,12 @@ class Cases extends PortalController
     {
         parent::initialize();
 
-        $this->model = \app\admin\model\Cases::class;
+        $this->model = ShotTipsModel::class;
     }
 
-    public function getCasesCateList()
+    public function getShareCateList()
     {
-        $cates = CasesCate::field('id, title')
+        $cates = ShotCate::field('id, title')
             ->where([
                 'status' => 1,
             ])->order('id asc, sort desc')
@@ -30,7 +31,7 @@ class Cases extends PortalController
         $this->success(lang('Get successful'), $cates);
     }
 
-    public function getCasesList()
+    public function getShotTipsList()
     {
         $cate_id = $this->request->param('cate_id/d', 0);
         $page = $this->request->param('page/d', 1);
@@ -40,14 +41,14 @@ class Cases extends PortalController
         }
 
         $total = $this->model::where([
-            'cases_cate_id' => $cate_id,
+            'shot_cate_id' => $cate_id,
             'status' => 1
         ])->count();
 
-        $cases = $this->model::field('id, cases_cate_id, title, cover_img, description')
+        $cases = $this->model::field('id, shot_cate_id, title, cover_img, description')
             ->where([
                 'status' => 1,
-                'cases_cate_id' => $cate_id,
+                'share_cate_id' => $cate_id,
             ])->order('id desc, sort desc')
             ->limit(($page - 1) * $limit, $limit)
             ->select();
