@@ -94,7 +94,7 @@
                     ).append($('<div />', {
                         class: 'card-body'
                     }).append($('<div />', {
-                        class: 'card-title text-center',
+                        class: 'card-title text-center line1',
                     }).append($('<a />', {
                         class: 'stretched-link text-reset',
                         href: _self.CONFIG.INFO_URL + '?id=' + item.id,
