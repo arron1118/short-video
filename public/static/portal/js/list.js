@@ -79,12 +79,19 @@
                         class: 'col-lg-4 col-md-6 col-sm-6 mb-4',
                     }).append($('<div />', {
                         class: 'card p-0 border-0',
-                    }).append($('<img />', {
-                        src: item.cover_img ? item.cover_img : '/static/common/images/nopic.jpg',
-                        alt: item.title,
-                        class: 'card-img-top img-fluid',
-                        style: 'max-height: 280px;',
-                    })).append($('<div />', {
+                    }).append($('<div/>',{
+                            class:'d-flex justify-content-center align-items-center',
+                            style:'height: 300px;'
+                        }).append(
+                            $('<img />', {
+                            src: item.cover_img ? item.cover_img : '/static/common/images/nopic.jpg',
+                            alt: item.title,
+                            class: 'card-img-top img-fluid',
+                            style: 'max-height: 300px;width: auto;',
+                        })
+                        )
+
+                    ).append($('<div />', {
                         class: 'card-body'
                     }).append($('<div />', {
                         class: 'card-title',

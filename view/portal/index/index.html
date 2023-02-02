@@ -91,7 +91,9 @@
         <div class="row">
             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                 <div class="card dy-card shadow text-center wow fadeIn" data-wow-delay="0">
-                    <div class="m-3"><img class="img-fluid" src="__STATIC__/portal/imgs/dy/c1.png" alt=""></div>
+                    <div class="m-3">
+                        <img class="img-fluid" src="__STATIC__/portal/imgs/dy/c1.png" alt="">
+                    </div>
                     <div class="card-body">
                         <h4 class="dy-card-title mb-4">账号定位</h4>
                         <div class="dy-card content">
@@ -276,9 +278,9 @@
         <div class="module-title my-5 text-center" data-wow-delay="0.1s">运营案例</div>
         <div class="row row-cols-3 align-items-center">
             {foreach ($cases as $key => $val)}
-            <div class="col p-0 m-0 justify-content-center text-center case-list wow fadeIn" {if ($key % 2 === 0)}data-wow-delay="0.6s"{else}data-wow-delay="0.3s"{/if}>
-                <a href="{:url('/cases/info', ['id' => $val['id']])}" title="{$val.title}" target="_blank">
-                    <img src="{$val.cover_img|default='static/common/images/nopic.jpg'}" alt="{$val.title}" class="img-fluid" style="max-height: 300px; width: fit-content" />
+            <div class="col p-0 m-0 case-list wow fadeIn d-flex justify-content-center align-items-center" style="height: 300px" {if ($key % 2 === 0)}data-wow-delay="0.6s"{else}data-wow-delay="0.3s"{/if}>
+                <a href="{:url('/cases/info', ['id' => $val['id']])}" title="{$val.title}" target="_blank" class="p-0 text-center">
+                    <img src="{$val.cover_img|default='static/common/images/nopic.jpg'}" alt="{$val.title}" class="img-fluid w-auto" style="max-height: 300px;" />
                 </a>
             </div>
             {/foreach}
@@ -323,7 +325,9 @@
             {foreach ($shotTips as $key => $val)}
             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                 <div class="card p-0 border-0 wow fadeIn" {if ($key % 2 === 0)} data-wow-delay="0.3s" {else} data-wow-delay="0.1s"{/if}>
-                    <img src="{$val.cover_img|default='static/common/images/nopic.jpg'}" alt="{$val.title}" class="card-img-top img-fluid" style="max-height: 280px;">
+                <div class=" d-flex justify-content-center align-items-center" style="height: 300px;">
+                    <img src="{$val.cover_img|default='static/common/images/nopic.jpg'}" alt="{$val.title}" class="card-img-top img-fluid w-auto" style="max-height: 300px;">
+                </div>
                     <div class="card-body">
                         <div class="text-center paishe-title">
                             <a class="stretched-link text-reset" href="#" title="{$val.title}">
