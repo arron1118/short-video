@@ -11,5 +11,13 @@
 
 {block name="script"}
 <script src="__STATIC__/portal/js/list.js"></script>
+<script type="text/javascript">
+    $(function () {
+        new List({
+            LIST_URL: '/share/getShotTipsList',
+            CATE_URL: '/share/getShotCateList',
+        }).init()
+    });
+</script>
 {/block}
 
