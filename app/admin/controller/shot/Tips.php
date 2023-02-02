@@ -37,11 +37,11 @@ class Tips extends AdminController
             }
             [$page, $limit, $where] = $this->buildTableParams();
             $count = $this->model
-                ->withJoin('ShotCate', 'LEFT')
+                ->withJoin('shotCate', 'LEFT')
                 ->where($where)
                 ->count();
             $list = $this->model
-                ->withJoin('ShotCate', 'LEFT')
+                ->withJoin('shotCate', 'LEFT')
                 ->where($where)
                 ->page($page, $limit)
                 ->order($this->sort)

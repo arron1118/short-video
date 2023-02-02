@@ -30,6 +30,7 @@ define(["jquery", "easy-admin"], function ($, ea) {
                 cols: [[
                     {type: 'checkbox'},
                     {field: 'id', title: 'ID'},
+                    {field: 'cate_title', title: '分类', search: false},
                     {field: 'title', title: '标题'},
                     {field: 'cover_img', title: '封面', templet: ea.table.image, search: false},
                     {field: 'keyword', title: '关键词'},

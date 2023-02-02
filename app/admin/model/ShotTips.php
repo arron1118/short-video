@@ -12,7 +12,7 @@ class ShotTips extends TimeModel
     protected $deleteTime = "delete_time";
 
 
-    public function ShotCate()
+    public function shotCate()
     {
         return $this->belongsTo('\app\admin\model\ShotCate', 'shot_cate_id', 'id')->bind(['cate_title' => 'title']);
     }

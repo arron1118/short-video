@@ -12,9 +12,9 @@ class Share extends TimeModel
     protected $deleteTime = "delete_time";
 
 
-    public function ShareCate()
+    public function shareCate()
     {
-        return $this->belongsTo('\app\admin\model\ShareCate', 'share_cate_id', 'id')->bind(['cate_title' => 'title']);
+        return $this->belongsTo(ShareCate::class, 'share_cate_id', 'id')->bind(['cate_title' => 'title']);
     }
 
 

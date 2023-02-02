@@ -17,7 +17,7 @@ class Share extends PortalController
     {
         parent::initialize();
 
-        $this->model = \app\admin\model\ShareModel::class;
+        $this->model = ShareModel::class;
     }
 
     public function getShareCateList()

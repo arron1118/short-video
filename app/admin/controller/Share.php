@@ -38,11 +38,11 @@ class Share extends AdminController
             }
             [$page, $limit, $where] = $this->buildTableParams();
             $count = $this->model
-                ->withJoin('ShareCate', 'LEFT')
+                ->withJoin('shareCate', 'LEFT')
                 ->where($where)
                 ->count();
             $list = $this->model
-                ->withJoin('ShareCate', 'LEFT')
+                ->withJoin('shareCate', 'LEFT')
                 ->where($where)
                 ->page($page, $limit)
                 ->order($this->sort)
