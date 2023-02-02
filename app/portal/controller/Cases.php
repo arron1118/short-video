@@ -66,6 +66,8 @@ class Cases extends PortalController
         $this->view->assign([
             'info' => $info,
             'title' => $info['title'],
+            'keyword' => $info['keyword'],
+            'description' => $info['description'],
         ]);
 
         return $this->view->fetch('public/info');
