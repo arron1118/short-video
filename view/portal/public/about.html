@@ -1,0 +1,14 @@
+<div class="about-banner">
+  <div class="container">
+    <div class="row m-0">
+      <div class="col-lg-6 col-md-12 col-sm-12 d-flex align-items-center justify-content-center wow fadeIn">
+        <img src="{:sysconfig('site', 'about_img')}" alt="" class="img-fluid about-banner-img h-auto">
+      </div>
+      <div class="col-lg-6 col-md-12 col-sm-12 wow fadeIn">
+        <div class="about-info text-indent2">
+          {:htmlspecialchars_decode(sysconfig('site', 'about_content'))}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

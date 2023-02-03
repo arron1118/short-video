@@ -34,19 +34,19 @@ class PortalController extends BaseController
      * 标题
      * @var string
      */
-    protected string $title = '易点咨询';
+    protected string $title = '';
 
     /**
      * 描述
      * @var string
      */
-    protected string $description = '易点咨询';
+    protected string $description = '';
 
     /**
      * 关键词
      * @var string
      */
-    protected string $keyword = '易点咨询';
+    protected string $keyword = '';
 
     public function initialize(): void
     {
@@ -55,6 +55,9 @@ class PortalController extends BaseController
         $this->module = $this->app->http->getName();
         $this->controller = strtolower($this->request->controller());
         $this->view = $this->app->view;
+        $this->title = $this->title ?? sysconfig('site', 'site_name');
+        $this->keyword = $this->keyword ?? sysconfig('site', 'site_name');
+        $this->description = $this->description ?? sysconfig('site', 'site_name');
 
         $this->view->assign([
             'controller' => $this->controller,

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="{$keyword|default=''}" />
     <meta name="description" content="{$description|default=''}" />
-    <title>易点咨询 - {block name="title"}{$title|default=''}{/block}</title>
+    <title>{:sysconfig('site', 'site_name')} - {block name="title"}{$title|default=''}{/block}</title>
     {include file="public/meta" /}
     {block name="css"}{/block}
 </head>
