@@ -46,41 +46,47 @@ video {
     font-size: 36px;
     color: #000000;
 }
-
-.module-subtitle {
-
+.navbar-nav .nav-link{
+        font-size: 18px;
+        position: relative;
+}
+.navbar-nav .nav-link.active{
+    color: #DF4B49;
 }
 
-.nav-pills .nav-link {
-    color: #000000 !important;
-}
-
-.nav-pills .nav-link {
+.home-header-web .nav-link {
+    color: #ffffff!important;
     font-size: 18px;
+}
+
+.home-header-mobile .nav-link {
+    color: var(--bs-nav-link-color)!important;
+    font-size: 18px;
+}
+.home-header-mobile .navbar-nav .nav-link.active{
+    color: #DF4B49!important;
+}
+.nav-pills .nav-link{
+    color: #333!important;
+    background: none!important;
+    font-size: 18px!important;
+}
+.nav-pills .nav-link{
     position: relative;
 }
-
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-    color: #000000;
-    background-color: #ffffff !important;
-}
-
 .nav-pills .nav-link.active::before {
     content: "";
     background-color: #DF4B49 !important;
-    width: 6px;
-    height: 6px;
+    width: 4px;
+    height: 4px;
     border-radius: 50px;
     position: absolute;
     left: 50%;
-    bottom: -6px;
+    bottom: 0;
 }
-
-.home-header .nav-link {
-    color: #ffffff;
-    font-size: 18px;
+.home-toggler .navbar-toggler  {
+    background-color: #fff!important;
 }
-
 .f-title {
     color: #fff;
     font-size: 18px;
@@ -191,12 +197,12 @@ video {
     font-size: 18px;
     line-height: 28px;
 }
-.bannerHeight-mobil{
-    min-height: 450px;
-}
-.bannerHeight-web{
-    min-height: 1095px;
-}
+/*.bannerHeight-mobil{*/
+/*    min-height: 450px;*/
+/*}*/
+/*.bannerHeight-web{*/
+/*    min-height: 1095px;*/
+/*}*/
 .about-banner-img {
     width: 385px;
     height: 355px;

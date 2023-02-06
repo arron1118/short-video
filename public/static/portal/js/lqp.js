@@ -20,8 +20,9 @@
                        )
                    ) {
                        console.log('手机')
-                       $('.home-banner').addClass('bannerHeight-mobil').removeClass('bannerHeight-web')
+                       // $('.home-banner').addClass('bannerHeight-mobil').removeClass('bannerHeight-web')
                        $('.contact-me').removeClass('position-absolute end-0 content-card')
+                       $('.home-header-color').addClass('home-header-mobile').removeClass('home-header-web')
                    }
                } catch (e) {
                    console.log('这是')
@@ -29,10 +30,33 @@
            }
        }else{
            console.log('web')
-           $('.home-banner').removeClass('bannerHeight-mobil').addClass('bannerHeight-web')
+           // $('.home-banner').removeClass('bannerHeight-mobil').addClass('bannerHeight-web')
            $('.contact-me').addClass('position-absolute end-0 content-card')
+           $('.home-header-color').addClass('home-header-web').removeClass('home-header-mobile')
        }
    }
 
    checkMobile();
+ // 滚动条
+    let scrollBar = function () {
+        let scroll_top = 0;
+        if (document.documentElement && document.documentElement.scrollTop) {
+            scroll_top = document.documentElement.scrollTop;
+        } else if (document.body) {
+            scroll_top = document.body.scrollTop;
+        }
+        console.log('滚动条高度', scroll_top)
+        if (scroll_top > 100) {
+            $('.fixed-top').addClass('bg-dark bg-opacity-75');
+        } else {
+            $('.fixed-top').removeClass('bg-dark bg-opacity-75');
+        }
+    }
+    scrollBar();
+    $(window).scroll(function () {
+        scrollBar();
+    });
+
+
+
 })(jQuery, window);
