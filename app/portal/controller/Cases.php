@@ -3,6 +3,7 @@ declare (strict_types = 1);
 
 namespace app\portal\controller;
 
+use app\admin\model\Carousel;
 use app\admin\model\CasesCate;
 use app\common\controller\PortalController;
 
@@ -17,6 +18,17 @@ class Cases extends PortalController
         parent::initialize();
 
         $this->model = \app\admin\model\Cases::class;
+
+        $carousel = Carousel::field('id, img, url, content')->where([
+            'status' => 1,
+            'cate_id' => 3,
+        ])->order('sort asc, id desc')
+            ->limit(1)
+            ->select();
+
+        $this->view->assign([
+            'carousel' => count($carousel) > 0 ? $carousel[0] : [],
+        ]);
     }
 
     public function getCasesCateList()

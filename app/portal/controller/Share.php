@@ -3,6 +3,7 @@ declare (strict_types = 1);
 
 namespace app\portal\controller;
 
+use app\admin\model\Carousel;
 use app\admin\model\ShareCate;
 use app\admin\model\Share as ShareModel;
 use app\common\controller\PortalController;
@@ -18,6 +19,17 @@ class Share extends PortalController
         parent::initialize();
 
         $this->model = ShareModel::class;
+
+        $carousel = Carousel::field('id, img, url, content')->where([
+            'status' => 1,
+            'cate_id' => 4,
+        ])->order('sort asc, id desc')
+            ->limit(1)
+            ->select();
+
+        $this->view->assign([
+            'carousel' => count($carousel) > 0 ? $carousel[0] : [],
+        ]);
     }
 
     public function getShareCateList()

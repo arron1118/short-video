@@ -3,6 +3,7 @@ declare (strict_types=1);
 
 namespace app\portal\controller;
 
+use app\admin\model\Carousel;
 use app\admin\model\CooperateCustomers;
 use app\admin\model\ShotTips;
 use app\admin\model\Cases;
@@ -15,6 +16,12 @@ class Index extends PortalController
 
     public function index()
     {
+        $carousel = Carousel::field('id, img, url, content')->where([
+            'status' => 1,
+            'cate_id' => 1,
+        ])->order('sort asc, id desc')
+            ->limit(5)
+            ->select();
         // 合作客户
         $cooperateCustomers = CooperateCustomers::field('id, title, logo, url')
             ->where([
@@ -42,6 +49,7 @@ class Index extends PortalController
             'cooperate_customers' => $cooperateCustomers,
             'cases' => $cases,
             'shotTips' => $shotTips,
+            'carousel' => $carousel,
         ]);
         return $this->view->fetch();
     }
