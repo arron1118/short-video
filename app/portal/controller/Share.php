@@ -20,9 +20,12 @@ class Share extends PortalController
 
         $this->model = ShareModel::class;
 
+        $action = $this->app->request->action();
+        $cate = $action === 'info' ? 6 : 4;
+
         $carousel = Carousel::field('id, img, url, content')->where([
             'status' => 1,
-            'cate_id' => 4,
+            'cate_id' => $cate,
         ])->order('sort asc, id desc')
             ->limit(1)
             ->select();
