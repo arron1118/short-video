@@ -46,10 +46,10 @@
             scroll_top = document.body.scrollTop;
         }
         console.log('滚动条高度', scroll_top)
-        if (scroll_top > 100) {
-            $('.fixed-top').addClass('bg-dark bg-opacity-75');
+        if (scroll_top > 70) {
+            $('.home-top').addClass('bg-dark');
         } else {
-            $('.fixed-top').removeClass('bg-dark bg-opacity-75');
+            $('.home-top').removeClass('bg-dark');
         }
     }
     scrollBar();
