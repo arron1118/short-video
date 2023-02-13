@@ -5,6 +5,7 @@ namespace app\portal\controller;
 
 use app\admin\model\CooperateCustomers;
 use app\common\controller\PortalController;
+use think\facade\View;
 
 class About extends PortalController
 {
@@ -19,6 +20,12 @@ class About extends PortalController
         $this->view->assign([
             'cooperate_customers' => $cooperateCustomers,
         ]);
+
+        $html = $this->view->display(sysconfig('site', 'html_content'));
+        $this->view->assign([
+            'html' => $html,
+        ]);
+
         return $this->view->fetch();
     }
 }
