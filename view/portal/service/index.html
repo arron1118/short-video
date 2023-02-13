@@ -1,9 +1,11 @@
 {extend name="public/index" /}
 
 {block name="main"}
+{if $carousel}
 <div class="banner wow fadeIn" data-wow-delay="0">
-    <img src="__STATIC__/portal/imgs/zx/banner2.png" alt="Logo" class="img-fluid">
+    <img src="{$carousel.img}" alt="Logo" class="img-fluid">
 </div>
+{/if}
 <div class="container">
     <div class="module-1">
         <div class="module-title my-5 text-center">我们的服务</div>
