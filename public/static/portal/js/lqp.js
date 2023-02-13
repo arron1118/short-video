@@ -38,24 +38,24 @@
 
    checkMobile();
  // 滚动条
-    let scrollBar = function () {
-        let scroll_top = 0;
-        if (document.documentElement && document.documentElement.scrollTop) {
-            scroll_top = document.documentElement.scrollTop;
-        } else if (document.body) {
-            scroll_top = document.body.scrollTop;
-        }
-        console.log('滚动条高度', scroll_top)
-        if (scroll_top > 70) {
-            $('.home-top').addClass('bg-dark');
-        } else {
-            $('.home-top').removeClass('bg-dark');
-        }
-    }
-    scrollBar();
-    $(window).scroll(function () {
-        scrollBar();
-    });
+ //    let scrollBar = function () {
+ //        let scroll_top = 0;
+ //        if (document.documentElement && document.documentElement.scrollTop) {
+ //            scroll_top = document.documentElement.scrollTop;
+ //        } else if (document.body) {
+ //            scroll_top = document.body.scrollTop;
+ //        }
+ //        console.log('滚动条高度', scroll_top)
+ //        if (scroll_top > 70) {
+ //            $('.home-top').addClass('bg-dark');
+ //        } else {
+ //            $('.home-top').removeClass('bg-dark');
+ //        }
+ //    }
+ //    scrollBar();
+ //    $(window).scroll(function () {
+ //        scrollBar();
+ //    });
 
 
 

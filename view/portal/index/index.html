@@ -11,10 +11,11 @@
     {include file="public/meta" /}
 </head>
 <body>
-<div style="position: relative">
+<div style="position: relative; min-height: 68px;">
     <!--    导航栏开始-->
     <header class="navbar  navbar-expand-lg navbar-dark bd-navbar sticky-top" style="padding-bottom: 60px;position: absolute; top: 0;">
-        <nav class="navbar bg-dark fixed-top home-top">
+        <nav class="navbar bg-dark fixed-top">
+<!--            home-top-->
             <div class="container home-toggler">
                 <a href="/" class="d-flex align-items-center mb-md-0 me-md-auto text-dark text-decoration-none">
                     <img src="{:sysconfig('site','home_logo_image')}" alt="Logo" class="img-fluid">
