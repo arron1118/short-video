@@ -11,7 +11,7 @@
     {include file="public/meta" /}
 </head>
 <body>
-<div style="position: relative; min-height: 68px;">
+<div style="position: relative;">
     <!--    导航栏开始-->
     <header class="navbar  navbar-expand-lg navbar-dark bd-navbar sticky-top" style="padding-bottom: 60px;position: absolute; top: 0;">
         <nav class="navbar bg-dark fixed-top">
@@ -60,7 +60,7 @@
     <!--导航栏结束-->
     <!--轮播图-->
     {if $carousel}
-    <div id="carouselExampleControls" class="carousel slide home-banner wow fadeIn" data-bs-ride="carousel">
+    <div id="carouselExampleControls" class="carousel slide home-banner wow fadeIn" data-bs-ride="carousel" style="margin-top: 68px;">
         <div class="carousel-inner">
             {foreach $carousel as $key => $val}
             <div class="carousel-item {if $key === 0}active{/if}">
