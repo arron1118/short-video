@@ -25,9 +25,15 @@
                     </div>
                 </div>
                 <div class="col-lg-7 col-md-12 col-sm-12">
-                    <div class="mb-4" style="font-size: 24px; color: #575757;">{:sysconfig('site', 'contact_company')}</div>
+                    <div class="mb-2 fs-4" style="color: #575757;">{:sysconfig('site', 'contact_company')}</div>
                     <div class="mb-4" style="font-size: 18px; color: #575757;">地址：{:sysconfig('site', 'contact_address')}</div>
-                    <div class="mb-4" style="height: 2px;background-color: #ccc; width: 85%;"></div>
+                    {if sysconfig('site', 'contact_company2')}
+                    <hr />
+                    <div class="mb-2 fs-4" style="color: #575757;">{:sysconfig('site', 'contact_company2')}</div>
+                    {/if}
+                    {if sysconfig('site', 'contact_address2')}
+                    <div class="mb-4" style="font-size: 18px; color: #575757;">地址：{:sysconfig('site', 'contact_address2')}</div>
+                    {/if}
                 </div>
             </div>
         </div>

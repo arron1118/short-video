@@ -60,7 +60,7 @@
     <!--导航栏结束-->
     <!--轮播图-->
     {if $carousel}
-    <div id="carouselExampleControls" class="carousel slide home-banner wow fadeIn" data-bs-ride="carousel" style="margin-top: 68px;">
+    <div id="carouselExampleCaptions" class="carousel slide home-banner wow fadeIn" data-bs-ride="carousel" style="margin-top: 68px;">
         <div class="carousel-inner">
             {foreach $carousel as $key => $val}
             <div class="carousel-item {if $key === 0}active{/if}">
@@ -68,15 +68,12 @@
             </div>
             {/foreach}
         </div>
+        <div class="carousel-indicators">
+            {foreach $carousel as $key => $val}
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{$key}" class="{if $key === 0}active{/if}"></button>
+            {/foreach}
+        </div>
 
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
     </div>
     {/if}
     <!--轮播图-->
@@ -445,17 +442,17 @@
         <div class="row">
             {foreach ($shotTips as $key => $val)}
             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                <div class="card p-0 border-0 wow fadeIn" {if ($key % 2 === 0)} data-wow-delay="0.3s" {else} data-wow-delay="0.1s"{/if}>
+                <div class="card p-0 border-0 bg-transparent wow fadeIn" {if ($key % 2 === 0)} data-wow-delay="0.3s" {else} data-wow-delay="0.1s"{/if}>
                 <div class=" d-flex justify-content-center align-items-center" style="height: 300px;">
                     <img src="{$val.cover_img|default='static/common/images/nopic.jpg'}" alt="{$val.title}" class="card-img-top img-fluid w-auto" style="max-height: 300px;">
                 </div>
                     <div class="card-body">
-                        <div class="text-center paishe-title mb-2 line1">
+                        <div class="paishe-title mb-2 line1">
                             <a class="stretched-link text-reset" href="{:url('/ShotTips/info', ['id' => $val.id])}" title="{$val.title}" target="_blank">
                                 {$val.title}
                             </a>
                         </div>
-                        <div class="paishe-content line3 text-indent2">
+                        <div class="paishe-content line3">
                             {$val.description}
                         </div>
                     </div>

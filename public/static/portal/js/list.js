@@ -78,7 +78,11 @@
                     listContent.append($('<div />', {
                         class: 'col-lg-4 col-md-6 col-sm-6 mb-4',
                     }).append($('<div />', {
-                        class: 'card p-0 border-0',
+                        class: 'card p-0 border-0 bg-transparent',
+                    }).hover(function () {
+                        $(this).addClass('shadow')
+                    }, function () {
+                        $(this).removeClass('shadow')
                     }).append($('<div/>',{
                             class:'d-flex justify-content-center align-items-center',
                             style:'height: 300px;'
@@ -94,14 +98,14 @@
                     ).append($('<div />', {
                         class: 'card-body'
                     }).append($('<div />', {
-                        class: 'card-title text-center line1',
+                        class: 'card-title line1',
                     }).append($('<a />', {
                         class: 'stretched-link text-reset',
                         href: _self.CONFIG.INFO_URL + '?id=' + item.id,
                         title: item.title,
                         target: '_blank',
                     }).text(item.title))).append($('<div />', {
-                        class: 'card-content line3 text-indent2',
+                        class: 'card-content line3',
                     }).text(item.description)))))
                 })
 
