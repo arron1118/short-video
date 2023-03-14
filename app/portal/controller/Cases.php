@@ -63,7 +63,7 @@ class Cases extends PortalController
             ->where([
                 'status' => 1,
                 'cases_cate_id' => $cate_id,
-            ])->order('id desc, sort desc')
+            ])->order('is_top desc, sort desc, id desc')
             ->limit(($page - 1) * $limit, $limit)
             ->select();
 

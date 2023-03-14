@@ -35,6 +35,7 @@ define(["jquery", "easy-admin"], function ($, ea) {
                     {field: 'cover_img', title: '封面', templet: ea.table.image, search: false},
                     {field: 'sort', title: '排序', edit: 'text', search: false},
                     {field: 'status', search: 'select', selectList: ["禁用","启用"], title: '状态', templet: ea.table.switch},
+                    {field: 'is_top', search: 'select', selectList: ["否","是"], title: '置顶', templet: ea.table.switch},
                     {field: 'view_count', title: '查看', search: false},
                     {field: 'create_time', title: '创建时间', search: false},
                     {width: 250, title: '操作', templet: ea.table.tool,

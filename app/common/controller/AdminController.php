@@ -50,6 +50,7 @@ class AdminController extends BaseController
         'is_delete',
         'is_auth',
         'title',
+        'is_top',
     ];
 
     /**

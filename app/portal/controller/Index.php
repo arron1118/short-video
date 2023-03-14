@@ -33,7 +33,8 @@ class Index extends PortalController
         $cases = Cases::field('id, title, cover_img')
             ->where([
                 'status' => 1,
-            ])->order('id desc, sort desc')
+                'is_top' => 1,
+            ])->order('is_top desc, sort desc, id desc')
             ->limit(9)
             ->select();
 
@@ -41,7 +42,8 @@ class Index extends PortalController
         $shotTips = ShotTips::field('id, title, cover_img, description')
             ->where([
                 'status' => 1,
-            ])->order('id desc, sort desc')
+                'is_top' => 1,
+            ])->order('is_top desc, sort desc, id desc')
             ->limit(9)
             ->select();
 
