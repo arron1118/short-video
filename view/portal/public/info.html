@@ -1,6 +1,12 @@
 {extend name="public/index" /}
 
 {block name="main"}
+<style>
+    .infos-content img {
+        max-width: 100%;
+        object-fit: contain;
+    }
+</style>
 {if $carousel}
 <div class="banner mb-5 wow fadeIn" data-wow-delay="0">
     <img src="{$carousel.img}" alt="" class="img-fluid">
