@@ -40,3 +40,4 @@ if ("undefined" != typeof CONFIG.AUTOLOAD_JS && CONFIG.AUTOLOAD_JS) {
         }
     });
 }
+// 初始化控制器对应的JS自动加载
