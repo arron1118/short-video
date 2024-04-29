@@ -22,13 +22,13 @@ require.config({
         "autocomplete": ["plugs/lay-module/autocomplete/autocomplete"],
         "vue": ["plugs/vue-2.6.10/vue.min"],
         "ckeditor": ["plugs/ckeditor/ckeditor"],
-        "bootstrap": ["plugs/bootstrap-5.2.3/js/bootstrap.bundle.min"]
+        "bootstrap": ["plugs/bootstrap/js/bootstrap.bundle.min"]
     }
 });
 
 // 路径配置信息
 var PATH_CONFIG = {
-    iconLess: BASE_URL + "plugs/font-awesome-4.7.0/less/variables.less",
+    iconLess: BASE_URL + "plugs/fontawesome-6.1.1/less/_variables.less",
 };
 window.PATH_CONFIG = PATH_CONFIG;
 
